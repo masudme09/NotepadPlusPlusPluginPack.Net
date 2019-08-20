@@ -1,0 +1,23 @@
+public class NotepadPPGateway : INotepadPPGateway
+	{
+         /// <summary>
+        /// This method save the currentfile file to current location
+        /// This method added by masudme09
+        /// </summary>
+        public void SaveCurrentFile()
+        {
+            string sessionPath =this.GetCurrentFilePath();
+            Win32.SendMessage(PluginBase.nppData._nppHandle,(uint) NppMsg.NPPM_SAVEFILE, 0, sessionPath);
+            
+        }
+
+         /// <summary>
+        /// This method save the currentfile file to given Path
+        /// This method added by masudme09
+        /// </summary>
+        public void SaveCurrentFile(string filePath)
+        {
+            Win32.SendMessage(PluginBase.nppData._nppHandle, (uint)NppMsg.NPPM_SAVECURRENTFILEAS, 0, filePath);
+           
+        }
+    }
